@@ -1,1 +1,25 @@
 
+
+### 3. **Setting Up the `.gitignore` File**
+
+We'll specify which files and directories Git should ignore to avoid cluttering the repository.
+
+#### **`.gitignore` Content:**
+
+```plaintext
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore virtual environment folder
+venv/
+
+# Ignore Jupyter notebook checkpoints
+.notebooks/
+
+# Ignore data files
+data/raw/*
+data/processed/*
+
+# Ignore system files
+.DS_Store
