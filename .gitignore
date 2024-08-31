@@ -23,3 +23,6 @@ data/processed/*
 
 # Ignore system files
 .DS_Store
+
+# .env file
+.env

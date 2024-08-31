@@ -2,6 +2,17 @@ import yfinance as yf
 import requests
 import pandas as pd
 import os
+# from dotenv import load_dotenv
+
+
+# load_dotenv()  # Load environment variables from the .env file
+# # Access the API key
+# #api_key = os.getenv("NEWS_API_KEY")
+api_key = 'a50cb0d117d6485785d77a1d2def1f28'
+# print(api_key)
+
+# if not api_key:
+#     raise ValueError("No API key found. Please set the NEWS_API_KEY in your .env file.")
 
 def download_stock_data(ticker, start_date, end_date):
     """
@@ -17,7 +28,17 @@ def fetch_news(api_key, query, start_date, end_date, page_size=100):
     """
     url = f"https://newsapi.org/v2/everything?q={query}&from={start_date}&to={end_date}&sortBy=popularity&pageSize={page_size}&apiKey={api_key}"
     response = requests.get(url)
+
+    # Check if the request was successful
+    if response.status_code != 200:
+        raise Exception(f"API request failed with status code {response.status_code}: {response.text}")
+
     news_data = response.json()
+
+    # Check if 'articles' key is in the response
+    if 'articles' not in news_data:
+        raise KeyError("'articles' not found in the API response. Response content: " + str(news_data))
+
     return news_data
 
 def save_data_to_csv(data, filename, folder="data/raw"):
