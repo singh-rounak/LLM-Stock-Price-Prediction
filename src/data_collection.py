@@ -2,13 +2,15 @@ import yfinance as yf
 import requests
 import pandas as pd
 import os
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from the .env file
 
 
-# load_dotenv()  # Load environment variables from the .env file
-# # Access the API key
-# #api_key = os.getenv("NEWS_API_KEY")
-api_key = 'a50cb0d117d6485785d77a1d2def1f28'
+#Access the API key
+# api_key = os.getenv("NEWS_API_KEY")
+
+# #api_key = 'a50cb0d117d6485785d77a1d2def1f28'
 # print(api_key)
 
 # if not api_key:
@@ -26,7 +28,7 @@ def fetch_news(api_key, query, start_date, end_date, page_size=100):
     """
     Fetch news articles from a news API.
     """
-    url = f"https://newsapi.org/v2/everything?q={query}&from={start_date}&to={end_date}&sortBy=popularity&pageSize={page_size}&apiKey={api_key}"
+    url = f"https://newsapi.org/v2/everything?q={query}&from={start_date}&to={end_date}&sortBy=popularity&pageSize={page_size}&apiKey={'0c95cea57abd4e29aa6666b04be03e6f'}"
     response = requests.get(url)
 
     # Check if the request was successful
@@ -48,13 +50,14 @@ def save_data_to_csv(data, filename, folder="data/raw"):
     if not os.path.exists(folder):
         os.makedirs(folder)
     filepath = os.path.join(folder, filename)
+    print(filepath)
     data.to_csv(filepath, index=False)
 
 if __name__ == "__main__":
     # Example usage
     ticker = "AAPL"
-    start_date = "2022-01-01"
-    end_date = "2023-01-01"
+    start_date = "2024-08-02"  # Example start date within allowed range
+    end_date = "2024-08-30"    # Example end date
     api_key = "your_news_api_key"
     query = "Apple"
 
