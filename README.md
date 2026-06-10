@@ -9,12 +9,6 @@ This project aims to predict stock prices by combining traditional time series f
 - Build and evaluate a time series forecasting model incorporating sentiment analysis.
 - Compare the performance of models with and without sentiment integration.
 
-## Project Structure
-- **data/**: Contains raw and processed data.
-- **notebooks/**: Jupyter notebooks for exploratory data analysis (EDA) and model training.
-- **src/**: Python scripts for data collection, preprocessing, modeling, and evaluation.
-- **README.md**: Project overview and instructions.
-- **requirements.txt**: Python dependencies.
-- **.gitignore**: Files and directories to be ignored by Git.
+
 
 
